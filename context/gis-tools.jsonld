@@ -10,6 +10,29 @@
   "softwareVersion": "1.2.0",
   "operatingSystem": "Windows, macOS, Linux",
   "softwareRequirements": "Node.js >= 18.0.0",
+  "extension": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "#vscode-pgsql",
+      "identifier": "ms-ossdata.vscode-pgsql",
+      "name": "PostgreSQL for VS Code",
+      "applicationCategory": "VSCode Extension",
+      "description": "PostgreSQL management and query execution extension for Visual Studio Code",
+      "url": "https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql",
+      "provider": {
+        "@type": "Organization",
+        "name": "Microsoft"
+      },
+      "featureList": [
+        "Database connection management",
+        "SQL query execution and results visualization",
+        "IntelliSense for SQL syntax",
+        "Query result export (CSV, JSON, Excel)",
+        "Database schema browsing",
+        "Spatial data support (PostGIS)"
+      ]
+    }
+  ],
   "instrument": {
     "@id": "#ai-credentials",
     "@type": "PropertyValue",
@@ -29,6 +52,11 @@
         "@type": "PropertyValue",
         "name": "SERVICE_ENDPOINT",
         "description": "External service endpoint URL"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "PGSQL_CONNECTION_STRING",
+        "description": "PostgreSQL database connection string (postgresql://user:password@host:port/database)"
       }
     ]
   },
@@ -80,6 +108,126 @@
               "--help": "Show Node.js usage information"
             }
           }
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:connect-database",
+      "name": "Connect to PostgreSQL Database",
+      "identifier": "pgsql-connect",
+      "description": "Establish connection to PostgreSQL/PostGIS database using VS Code extension",
+      "instrument": {
+        "@type": "SoftwareApplication",
+        "identifier": "ms-ossdata.vscode-pgsql"
+      },
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "vscode:extension/ms-ossdata.vscode-pgsql",
+        "actionPlatform": ["Visual Studio Code"],
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "text": "Use Command Palette: PostgreSQL: Connect"
+          }
+        ]
+      },
+      "object": {
+        "@type": "PropertyValue",
+        "name": "connectionString",
+        "description": "PostgreSQL connection parameters",
+        "valueRequired": true
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "supportedProtocols",
+          "value": ["postgresql", "postgres"]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "spatialExtensions",
+          "value": ["PostGIS"]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:execute-query",
+      "name": "Execute SQL Query",
+      "identifier": "pgsql-query",
+      "description": "Execute SQL queries against PostgreSQL database with spatial data support",
+      "instrument": {
+        "@type": "SoftwareApplication",
+        "identifier": "ms-ossdata.vscode-pgsql"
+      },
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "*.sql",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "programmingLanguage": "SQL"
+        },
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "text": "SELECT ST_AsGeoJSON(geom) FROM spatial_table;"
+          },
+          {
+            "@type": "HowToDirection",
+            "text": "SELECT * FROM pg_tables WHERE schemaname = 'public';"
+          }
+        ]
+      },
+      "result": {
+        "@type": "DataDownload",
+        "encodingFormat": ["application/json", "text/csv", "application/vnd.ms-excel"],
+        "description": "Query results with export options"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "supportedFormats",
+          "value": ["CSV", "JSON", "Excel", "Markdown"]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "spatialFunctions",
+          "value": ["ST_AsGeoJSON", "ST_Transform", "ST_Intersects", "ST_Buffer", "ST_Within"]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:manage-schema",
+      "name": "Manage Database Schema",
+      "identifier": "pgsql-schema",
+      "description": "Browse and manage PostgreSQL database schema including spatial tables",
+      "instrument": {
+        "@type": "SoftwareApplication",
+        "identifier": "ms-ossdata.vscode-pgsql"
+      },
+      "target": {
+        "@type": "EntryPoint",
+        "actionPlatform": ["Visual Studio Code"],
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "text": "View database schema in PostgreSQL explorer"
+          }
+        ]
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "capabilities",
+          "value": [
+            "View tables and views",
+            "Inspect column types and constraints",
+            "Identify spatial geometry columns",
+            "Execute DDL statements",
+            "Generate SQL snippets"
+          ]
         }
       ]
     }
