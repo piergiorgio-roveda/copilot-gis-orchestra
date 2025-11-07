@@ -1,13 +1,25 @@
 {
   "name": "copilot-gis-orchestra",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "Project designed as a knowledge repository for Geographic Information Systems (GIS), urban planning, and AI-driven geospatial applications.",
+  "author": "Project Author",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piergiorgio-roveda/cp-copilot-gis-orchestra"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
+    "hello-world": "node src/hello-world.js",
     "security:check": "node scripts/security-check.js",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate": "npm run format:check && npm run lint && npm run security:check"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

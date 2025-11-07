@@ -14,6 +14,42 @@
         "panel": "new"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Lint",
+      "type": "shell",
+      "command": "npm run lint",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Format",
+      "type": "shell",
+      "command": "npm run format",
+      "problemMatcher": []
+    },
+    {
+      "label": "Format Check",
+      "type": "shell",
+      "command": "npm run format:check",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate",
+      "type": "shell",
+      "command": "npm run validate",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
     }
   ]
 }

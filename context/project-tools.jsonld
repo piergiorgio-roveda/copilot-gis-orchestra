@@ -3,7 +3,7 @@
   "@type": "SoftwareApplication",
   "name": "Project Tools",
   "description": "Development and maintenance tools for GIS Orchestra project",
-  "dateCreated": "2025-11-07",
+  "dateCreated": "2025-11-07T00:00:00Z",
   "dateModified": "2025-11-07T00:00:00Z",
   "applicationCategory": "DeveloperApplication",
   "softwareVersion": "1.0.0",
@@ -33,6 +33,73 @@
             "Hardcoded secrets detection",
             "Dependency vulnerability scan",
             "Code quality checks"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "Lint",
+      "identifier": "lint",
+      "description": "Run ESLint code quality checks",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run lint"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Code quality report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Format",
+      "identifier": "format",
+      "description": "Format code using Prettier",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run format"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Formatted code files"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Format Check",
+      "identifier": "format:check",
+      "description": "Check code formatting without modifying files",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run format:check"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Formatting validation report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Validate",
+      "identifier": "validate",
+      "description": "Run all validation checks: format, lint, security",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run validate"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Comprehensive validation report"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "Code formatting validation",
+            "ESLint code quality",
+            "Security scan"
           ]
         }
       ]
