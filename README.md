@@ -1,5 +1,7 @@
 # GitHub Copilot Orchestra for Geographic Information Systems
 
+![Best practices in spatial data analysis and methodology](https://geo-source.ams3.digitaloceanspaces.com/geospatial-revolution/covers/x-only-image-cover-2025-11-07T10-17-25-721Z.webp)
+
 ## Project Overview
 
 **Copilot GIS Orchestra** is a primarily Node.js–based project designed as a knowledge repository for Geographic Information Systems (GIS), urban planning, and AI-driven geospatial applications.

@@ -10,6 +10,71 @@
   "softwareVersion": "1.2.0",
   "operatingSystem": "Windows, macOS, Linux",
   "softwareRequirements": "Node.js >= 18.0.0",
+  "runtimePlatform": [
+    {
+      "@type": "DigitalDocument",
+      "@id": "#postgres-postgis",
+      "name": "PostgreSQL with PostGIS",
+      "description": "Core database system for spatial data storage and GIS operations",
+      "applicationCategory": "Database",
+      "softwareVersion": "PostgreSQL 14+, PostGIS 3.0+",
+      "isAccessibleForFree": true,
+      "url": "https://postgis.net/",
+      "featureList": [
+        "Spatial data types (geometry, geography)",
+        "Spatial indexing (GiST, SP-GiST)",
+        "Spatial functions (ST_*, coordinate transformations)",
+        "Raster data support",
+        "Topology management",
+        "Vector tile generation"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "#qgis-ogr2ogr",
+      "name": "QGIS with OGR2OGR",
+      "description": "Desktop GIS application with vector/raster conversion utilities callable from Node.js",
+      "applicationCategory": "GIS Desktop Application",
+      "softwareVersion": "QGIS 3.38+",
+      "operatingSystem": "Windows",
+      "installUrl": "https://qgis.org/",
+      "executableName": "ogr2ogr.exe",
+      "installLocation": {
+        "@type": "PropertyValue",
+        "name": "QGIS_DIR",
+        "value": "C:\\Program Files\\QGIS 3.38.3",
+        "description": "Default Windows installation path"
+      },
+      "featureList": [
+        "Vector format conversion (Shapefile, GeoJSON, KML, etc.)",
+        "Raster format conversion (GeoTIFF, PNG, etc.)",
+        "Coordinate system transformation",
+        "Spatial filtering and clipping",
+        "Direct PostgreSQL/PostGIS import/export",
+        "Batch processing capabilities"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "executablePath",
+          "value": "bin\\ogr2ogr.exe",
+          "description": "Relative path from QGIS_DIR"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "gdal_data",
+          "value": "share\\gdal",
+          "description": "GDAL data directory for coordinate system definitions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "proj_lib",
+          "value": "share\\proj",
+          "description": "PROJ library directory for projections"
+        }
+      ]
+    }
+  ],
   "extension": [
     {
       "@type": "SoftwareApplication",
@@ -57,6 +122,26 @@
         "@type": "PropertyValue",
         "name": "PGSQL_CONNECTION_STRING",
         "description": "PostgreSQL database connection string (postgresql://user:password@host:port/database)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "QGIS_DIR",
+        "description": "Path to QGIS installation directory (e.g., C:\\Program Files\\QGIS 3.38.3)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "OGR2OGR_PATH",
+        "description": "Full path to ogr2ogr.exe executable (QGIS_DIR\\bin\\ogr2ogr.exe)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "GDAL_DATA",
+        "description": "Path to GDAL data directory (QGIS_DIR\\share\\gdal)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "PROJ_LIB",
+        "description": "Path to PROJ library directory (QGIS_DIR\\share\\proj)"
       }
     ]
   },
@@ -230,6 +315,188 @@
           ]
         }
       ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:ogr2ogr-convert",
+      "name": "Convert Vector Data with OGR2OGR",
+      "identifier": "ogr2ogr-convert",
+      "description": "Execute ogr2ogr from Node.js to convert vector formats or import to PostGIS",
+      "instrument": {
+        "@type": "SoftwareApplication",
+        "identifier": "ogr2ogr.exe"
+      },
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{QGIS_DIR}\\bin\\ogr2ogr.exe",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "programmingLanguage": "JavaScript",
+          "runtimePlatform": "Node.js"
+        },
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "name": "Shapefile to GeoJSON",
+            "text": "ogr2ogr -f GeoJSON output.geojson input.shp"
+          },
+          {
+            "@type": "HowToDirection",
+            "name": "Import to PostGIS",
+            "text": "ogr2ogr -f PostgreSQL PG:\"dbname=mydb host=localhost user=postgres\" input.shp -nln table_name"
+          },
+          {
+            "@type": "HowToDirection",
+            "name": "Transform CRS",
+            "text": "ogr2ogr -t_srs EPSG:4326 -s_srs EPSG:3857 output.shp input.shp"
+          },
+          {
+            "@type": "HowToDirection",
+            "name": "Clip by extent",
+            "text": "ogr2ogr -clipsrc minX minY maxX maxY output.shp input.shp"
+          }
+        ]
+      },
+      "object": {
+        "@type": "DataDownload",
+        "encodingFormat": [
+          "application/x-esri-shapefile",
+          "application/geo+json",
+          "application/vnd.google-earth.kml+xml",
+          "application/geopackage+sqlite3",
+          "text/csv"
+        ],
+        "description": "Input vector data in supported format"
+      },
+      "result": {
+        "@type": "DataDownload",
+        "encodingFormat": [
+          "application/geo+json",
+          "application/x-esri-shapefile",
+          "application/vnd.google-earth.kml+xml",
+          "application/geopackage+sqlite3",
+          "application/x-postgresql"
+        ],
+        "description": "Converted vector data or PostGIS import"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "implementationDetails",
+          "value": {
+            "@type": "TechArticle",
+            "dependencies": ["child_process", "path"],
+            "operations": [
+              "Construct ogr2ogr command with arguments",
+              "Execute via child_process.spawn() or exec()",
+              "Set environment variables (GDAL_DATA, PROJ_LIB)",
+              "Capture stdout/stderr for logging",
+              "Handle exit codes and errors"
+            ],
+            "cliFlags": {
+              "-f": "Output format driver (GeoJSON, PostgreSQL, etc.)",
+              "-t_srs": "Target spatial reference system (EPSG code)",
+              "-s_srs": "Source spatial reference system",
+              "-nln": "New layer name in target database",
+              "-overwrite": "Overwrite existing output",
+              "-append": "Append to existing layer",
+              "-clipsrc": "Clip source by extent or geometry",
+              "-where": "SQL WHERE clause for filtering"
+            }
+          }
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "nodeJsIntegration",
+          "value": {
+            "@type": "SoftwareSourceCode",
+            "programmingLanguage": "JavaScript",
+            "codeRepository": "child_process module",
+            "text": "const { spawn } = require('child_process'); const ogr = spawn(OGR2OGR_PATH, args, { env: { GDAL_DATA, PROJ_LIB } });"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:postgis-import",
+      "name": "Bulk Import Spatial Data to PostGIS",
+      "identifier": "postgis-import",
+      "description": "Import spatial data files directly into PostgreSQL/PostGIS tables",
+      "instrument": [
+        {
+          "@type": "SoftwareApplication",
+          "identifier": "ogr2ogr.exe"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "identifier": "ms-ossdata.vscode-pgsql"
+        }
+      ],
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "PG:\"dbname={db} host={host} user={user} password={password}\"",
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "name": "Import Shapefile",
+            "text": "ogr2ogr -f PostgreSQL PG:\"dbname=gisdb\" data.shp -nln cities -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST"
+          },
+          {
+            "@type": "HowToDirection",
+            "name": "Import GeoJSON with overwrite",
+            "text": "ogr2ogr -f PostgreSQL PG:\"dbname=gisdb\" data.geojson -nln parcels -overwrite"
+          }
+        ]
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "layerCreationOptions",
+          "value": {
+            "GEOMETRY_NAME": "Column name for geometry (default: wkb_geometry)",
+            "SPATIAL_INDEX": "Index type: GIST, SPGIST, NONE",
+            "OVERWRITE": "Drop existing table before import",
+            "SCHEMA": "Target schema name (default: public)",
+            "PRECISION": "Coordinate precision (YES/NO)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "@id": "#gis:postgis-export",
+      "name": "Export PostGIS Data to Files",
+      "identifier": "postgis-export",
+      "description": "Export PostgreSQL/PostGIS tables to vector file formats",
+      "instrument": {
+        "@type": "SoftwareApplication",
+        "identifier": "ogr2ogr.exe"
+      },
+      "target": {
+        "@type": "EntryPoint",
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "name": "Export to GeoJSON",
+            "text": "ogr2ogr -f GeoJSON output.geojson PG:\"dbname=gisdb\" -sql \"SELECT * FROM cities WHERE population > 100000\""
+          },
+          {
+            "@type": "HowToDirection",
+            "name": "Export to Shapefile",
+            "text": "ogr2ogr -f \"ESRI Shapefile\" output.shp PG:\"dbname=gisdb\" table_name"
+          }
+        ]
+      },
+      "result": {
+        "@type": "DataDownload",
+        "encodingFormat": [
+          "application/geo+json",
+          "application/x-esri-shapefile",
+          "application/vnd.google-earth.kml+xml",
+          "application/geopackage+sqlite3"
+        ]
+      }
     }
   ]
 }
