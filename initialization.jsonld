@@ -1,0 +1,246 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "./initialization.jsonld",
+  "name": "Project Initialization Checklist",
+  "description": "Completed initialization tasks for GIS project",
+  "dateCreated": "2025-11-06",
+  "dateModified": "2025-11-06",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-001",
+        "name": "Choose appropriate client/folder",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-002",
+        "name": "Choose a name like <project-slug>",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-003",
+        "name": "Save VSCode workspace and add Project Manager (vscode extension with identifier `alefragnani.project-manager`)",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-004",
+        "name": "Add/Edit README.md with project description",
+        "description": "Simple project description translated to English",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-005",
+        "name": "Copy copilot-instructions.md to .github folder",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-006",
+        "name": "Analyze instructions and initialize files",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-007",
+        "name": "Create workflow-jsonld.json",
+        "description": "The primary software will be Node.js, so analyze the file `workflow-jsonld.json` and adapt to current project.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-008",
+        "name": "Define other programming languages in workflow-jsonld.json file",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-009",
+        "name": "Create `maintenance.jsonld`",
+        "description": "As defined softwareRequirements as Node.js, in `workflow-jsonld.json`, analyze the file `maintenance.jsonld` and adapt to current project.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-010",
+        "name": "Check the file `coding-principles.jsonld`",
+        "description": "Verify coding-principles.jsonld contains 7 core principles: CODE_ONLY, AGENT_FIRST, DRY, SRP, SOC, COC, SECURITY_FIRST. Ensure SECURITY_FIRST principle enforces .env usage and prohibits credentials in commits.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-011",
+        "name": "Check `project-principles.jsonld`",
+        "description": "Analyze the file `project-principles.jsonld` and adapt to current project.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-013",
+        "name": "Check `project-metadata.jsonld`",
+        "description": "Analyze the file `project-metadata.jsonld` and adapt to current project. Set a placeholder for dataSources to be defined later.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-014",
+        "name": "Check `gis-tools.jsonld`",
+        "description": "Analyze the file `gis-tools.jsonld` and adapt to current project. Set a placeholder for potentialAction but keep at least one as placeholder (generalize it).",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-015",
+        "name": "Check `project-tools.jsonld`",
+        "description": "Analyze the file `project-tools.jsonld and adapt to current project.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-016",
+        "name": "Analyze workflow-jsonld.json readiness",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "init-017",
+        "name": "Initialize Git repository and push",
+        "description": "Check for credentials in .env and ensure .env is in .gitignore before pushing. Deep check in all codebase files there are NO credentials/secrets.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-001",
+        "name": "Create directory structure",
+        "description": "content/ and dist/ directories do not exist",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-002",
+        "name": "Implement build entry point",
+        "description": "build/index.js contains only TODO placeholder",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-003",
+        "name": "Implement theme detection",
+        "description": "src/main.js contains only TODO placeholder",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-004",
+        "name": "Install dev dependencies",
+        "description": "devDependencies installed: eslint, prettier, eslint-config-prettier, eslint-plugin-prettier",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-005",
+        "name": "Implement GIS tools",
+        "description": "gis-tools.jsonld references non-existent article-generator.js",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "blocking-006",
+        "name": "Create environment template",
+        "description": "No .env.example file for database credentials configuration",
+        "actionStatus": "CompletedActionStatus"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "item": {
+        "@type": "Action",
+        "identifier": "adaptation-006",
+        "name": "Create VSCode tasks for quality checks",
+        "description": "Create .vscode/tasks.json with tasks: Security Check. Set appropriate task groups (test/build) and presentation options.",
+        "actionStatus": "CompletedActionStatus"
+      }
+    }
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "blocking_issues_resolved",
+      "value": "true"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "project_readiness",
+      "value": "ready"
+    }
+  ]
+}

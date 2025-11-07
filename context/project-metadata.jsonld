@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareSourceCode",
+  "name": "GIS Project",
+  "description": "Project designed as a knowledge repository for Geographic Information Systems (GIS), urban planning, and AI-driven geospatial applications.",
+  "version": "1.0.0",
+  "author": {
+    "@type": "Person",
+    "name": "Project Author"
+  },
+  "dateCreated": "2025-11-06",
+  "dateModified": "2025-11-06",
+  "programmingLanguage": "JavaScript",
+  "runtimePlatform": "Node.js",
+  "codeRepository": "https://github.com/piergiorgio-roveda/cp-copilot-gis-orchestra",
+  "license": "ISC",
+  "dependencies": [],
+  "devDependencies": [
+    "eslint",
+    "prettier",
+    "eslint-config-prettier",
+    "eslint-plugin-prettier",
+    "@rollup/rollup-win32-x64-msvc"
+  ],
+  "directories": {
+    "src/": {
+      "path": "./src",
+      "purpose": "Application source code and content templates",
+      "files": {
+        "main.js": "Main application entry point"
+      }
+    },
+    "scripts/": {
+      "path": "./scripts",
+      "purpose": "Automation and deployment scripts"
+    },
+    "context/": {
+      "path": "./context",
+      "purpose": "JSON-LD context files (source of truth for agents)"
+    },
+    ".github/": {
+      "path": "./.github",
+      "purpose": "GitHub Copilot instructions and repository configuration"
+    }
+  },
+  "dataSources": {
+    "input": {},
+    "output": {}
+  }
+}

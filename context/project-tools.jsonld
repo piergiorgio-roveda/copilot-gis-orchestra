@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "name": "Project Tools",
+  "description": "Development and maintenance tools for GIS Orchestra project",
+  "dateCreated": "2025-11-07",
+  "dateModified": "2025-11-07T00:00:00Z",
+  "applicationCategory": "DeveloperApplication",
+  "softwareVersion": "1.0.0",
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "Security Check",
+      "identifier": "security:check",
+      "description": "Run security scan for hardcoded secrets and vulnerable dependencies",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run security:check",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/security-check.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Security report with errors and warnings"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "Hardcoded secrets detection",
+            "Dependency vulnerability scan",
+            "Code quality checks"
+          ]
+        }
+      ]
+    }
+  ]
+}

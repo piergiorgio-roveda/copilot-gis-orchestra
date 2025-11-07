@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "@vocab": "https://cityplanner.biz/schema/",
+    "maintenance": "https://cityplanner.biz/maintenance/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  },
+  "@type": "MaintenanceConfiguration",
+  "@id": "maintenance:config",
+  "name": "GIS Project Maintenance Configuration",
+  "version": "1.0.0",
+  "softwareRequirements": "Node.js",
+  "projectType": "content-management-system",
+  "maintenance": {
+    "codeGeneration": {
+      "mode": "machine-readable-only",
+      "allowedComments": ["TODO(agent)", "ASSUMPTION(agent)"],
+      "prohibitedOutput": ["explanations", "tutorials", "setup-instructions"],
+      "targetRuntime": "nodejs"
+    },
+    "fileStructure": {
+      "preserveExisting": true,
+      "contextDirectory": "./context",
+      "sourceDirectory": "./src",
+      "buildDirectory": "./build",
+      "sourceOfTruth": "json-ld"
+    },
+    "qualityAssurance": {
+      "codeStyle": "eslint",
+      "formatting": "prettier",
+      "testing": "automated",
+      "security": "vulnerability-scan"
+    },
+    "markdown": {
+      "maxHeadingLevel": 4,
+      "listMarker": "-",
+      "lineWidth": 80,
+      "codeBlocks": "always-specify-language"
+    },
+    "errorHandling": {
+      "ambiguousRequests": "minimal-safe-change",
+      "missingContext": "create-valid-stub", 
+      "incompleteOperation": "return-pending-manifest"
+    },
+    "automation": {
+      "schedules": {
+        "dependencyUpdates": "weekly",
+        "securityScans": "daily",
+        "codeQuality": "on-commit"
+      },
+      "triggers": [
+        "pre-commit-hooks",
+        "continuous-integration",
+        "deployment-pipeline"
+      ]
+    }
+  },
+  "enforcement": "strict",
+  "created": "2025-11-06T00:00:00Z",
+  "modified": "2025-11-06T00:00:00Z"
+}

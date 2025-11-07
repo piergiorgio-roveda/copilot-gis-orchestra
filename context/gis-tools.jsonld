@@ -1,0 +1,87 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./gis-tools.jsonld",
+  "name": "Content Writer Tools",
+  "description": "Toolkit for content creation, article generation, and publishing workflows",
+  "dateCreated": "2025-11-06",
+  "dateModified": "2025-11-06T18:55:00Z",
+  "applicationCategory": "DeveloperApplication",
+  "softwareVersion": "1.2.0",
+  "operatingSystem": "Windows, macOS, Linux",
+  "softwareRequirements": "Node.js >= 18.0.0",
+  "instrument": {
+    "@id": "#ai-credentials",
+    "@type": "PropertyValue",
+    "name": "AI API Credentials",
+    "value": [
+      {
+        "@type": "PropertyValue",
+        "name": "OPENAI_API_KEY",
+        "description": "OpenAI API key for AI model access (required in .env)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "API_KEY",
+        "description": "Generic API key for external service authentication"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "SERVICE_ENDPOINT",
+        "description": "External service endpoint URL"
+      }
+    ]
+  },
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "@id": "#content:hello-world",
+      "name": "Hello World Script",
+      "identifier": "hello-world",
+      "description": "Execute hello-world.js Node.js script that outputs Hello World! message.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "node src/hello-world.js",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./src/hello-world.js"
+        },
+        "example": [
+          {
+            "@type": "HowToDirection",
+            "text": "node src/hello-world.js"
+          }
+        ]
+      },
+      "object": {
+        "@type": "SoftwareSourceCode",
+        "description": "Node.js script file",
+        "encodingFormat": "application/javascript",
+        "contentLocation": "./src/hello-world.js"
+      },
+      "result": {
+        "@type": "ComputerLanguage",
+        "description": "Console output: Hello World!",
+        "encodingFormat": "text/plain",
+        "contentLocation": "stdout"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "implementationDetails",
+          "value": {
+            "@type": "TechArticle",
+            "dependencies": ["node"],
+            "operations": [
+              "Execute hello-world.js script",
+              "Output 'Hello World!' to console"
+            ],
+            "cliFlags": {
+              "--help": "Show Node.js usage information"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

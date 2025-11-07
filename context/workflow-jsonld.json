@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@vocab": "https://cityplanner.biz/schema/",
+    "workflow": "https://cityplanner.biz/workflow/",
+    "project": "https://cityplanner.biz/project/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  },
+  "@type": "WorkflowManifest",
+  "@id": "workflow:main",
+  "name": "GIS Project Platform",
+  "version": "1.0.0",
+  "mode": "active",
+  "primaryLanguage": "JavaScript",
+  "softwareRequirements": "Node.js",
+  "projectType": "content-management-system",
+  "domain": "geospatial-urban-planning",
+  "components": {
+    "projectMetadata": {
+      "@type": "ProjectMetadata",
+      "@id": "./project-metadata.jsonld",
+      "description": "Project configuration and metadata",
+      "status": "ready"
+    },
+    "codingPrinciples": {
+      "@type": "CodingPrinciples",
+      "@id": "./coding-principles.jsonld",
+      "description": "Development standards and coding guidelines"
+    },
+    "projectPrinciples": {
+      "@type": "ProjectPrinciples",
+      "@id": "./project-principles.jsonld",
+      "description": "Business logic and project-specific principles"
+    },
+    "projectTools": {
+      "@type": "ProjectTools",
+      "@id": "./project-tools.jsonld",
+      "description": "Development and deployment toolchain"
+    },
+    "contentTools": {
+      "@type": "DomainTools",
+      "@id": "./gis-tools.jsonld",
+      "description": "Content writing and publishing tools"
+    },
+    "maintenanceConfig": {
+      "@type": "MaintenanceConfiguration",
+      "@id": "./maintenance.jsonld",
+      "description": "Automated maintenance and quality assurance"
+    }
+  },
+  "workflow": {
+    "phases": [
+      "initialization",
+      "development"
+    ],
+    "currentPhase": "initialization",
+    "phaseStatus": {
+      "initialization": "CompletedActionStatus"
+    }
+  },
+  "dependencies": {
+    "runtime": ["Node.js >= 18.0.0"],
+    "development": [
+      "eslint",
+      "prettier",
+      "eslint-config-prettier",
+      "eslint-plugin-prettier"
+    ]
+  },
+  "created": "2025-11-06T00:00:00Z",
+  "modified": "2025-11-06T15:30:00Z"
+}

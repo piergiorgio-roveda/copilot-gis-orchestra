@@ -1,0 +1,98 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTermSet",
+  "name": "Project Principles",
+  "description": "Stack-specific principles for GIS Project platform",
+  "dateCreated": "2025-11-02",
+  "dateModified": "2025-11-06",
+  "hasPart": [
+    {
+      "@type": "DefinedTermSet",
+      "name": "Runtime & Stack",
+      "description": "Core technology stack principles",
+      "hasPart": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Node.js Native",
+          "description": "Pure Node.js with no build tools or transpilation. ES modules via .mjs or package.json type module.",
+          "termCode": "NODE_NATIVE"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Node.js First",
+          "description": "All automation must be Node.js native. Avoid scripts_ps/, scripts_py/, scripts_c/ or similar folders. Only use platform-specific scripts if Node.js fundamentally cannot accomplish the task.",
+          "termCode": "NODE_FIRST"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Minimal Dependencies",
+          "description": "Only essential npm packages. Prefer Node.js built-ins. No framework bloat.",
+          "termCode": "MIN_DEPS"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Sync/Async Clarity",
+          "description": "Clear async/await patterns. No callback hell. Explicit promise handling.",
+          "termCode": "ASYNC_CLARITY"
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Architecture & Code Organization",
+      "description": "Project structure and separation principles",
+      "hasPart": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Utility Functions",
+          "description": "build/utils/ for pure functions only. No side effects, no API calls, no I/O within utils.",
+          "termCode": "PURE_UTILS"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Scripts Organization",
+          "description": "scripts/ for automation, deployment, and quality checks. Clear separation from build logic.",
+          "termCode": "SCRIPTS_ORG"
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Data Management",
+      "description": "Data storage and transformation principles",
+      "hasPart": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Content Immutability",
+          "description": "content/ is source of truth. Never modify directly during build. All transformations write to dist-prod/.",
+          "termCode": "CONTENT_IMMUTABLE"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "JSON-LD Schema.org Compliance",
+          "description": "Strict Schema.org vocabulary for articles. Article, Person, Organization types with full metadata.",
+          "termCode": "JSONLD_SCHEMA_ORG"
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Security & Configuration",
+      "description": "Secrets and configuration management",
+      "hasPart": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Environment-Based Config",
+          "description": ".env for credentials and secrets. No hardcoded credentials. Environment variable validation.",
+          "termCode": "ENV_CONFIG"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Security Scanning",
+          "description": "Automated security checks for secrets, dependencies, and code quality. Pre-deployment validation.",
+          "termCode": "SECURITY_SCAN"
+        }
+      ]
+    }
+  ]
+}
