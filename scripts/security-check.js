@@ -21,7 +21,7 @@ const secretPatterns = [
     name: 'hardcoded secret/token'
   },
   {
-    pattern: /(?:mongodb|postgres|mysql):\/\/[^'"]+/gi,
+    pattern: /(?:mongodb|postgres|mysql):\/[^'"]+/gi,
     name: 'database connection string'
   },
   {
@@ -53,7 +53,7 @@ async function scanDirectory(dir) {
 
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
-    const relativePath = fullPath.replace(rootDir, '').replace(/^[\\\/]/, '');
+    const relativePath = fullPath.replace(rootDir, '').replace(/^[\\/]/, '');
 
     if (entry.isDirectory()) {
       if (!excludeDirs.includes(entry.name)) {
@@ -96,13 +96,7 @@ async function scanFile(filePath, relativePath) {
 
 async function checkDependencies() {
   try {
-    const packageJson = JSON.parse(
-      await readFile(join(rootDir, 'package.json'), 'utf-8')
-    );
-    const deps = {
-      ...packageJson.dependencies,
-      ...packageJson.devDependencies
-    };
+    await readFile(join(rootDir, 'package.json'), 'utf-8');
 
     const knownVulnerable = [];
 
