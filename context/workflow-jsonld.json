@@ -49,10 +49,7 @@
     }
   },
   "workflow": {
-    "phases": [
-      "initialization",
-      "development"
-    ],
+    "phases": ["initialization", "development"],
     "currentPhase": "initialization",
     "phaseStatus": {
       "initialization": "CompletedActionStatus"

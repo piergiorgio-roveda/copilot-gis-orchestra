@@ -14,14 +14,17 @@
 3. NEVER Instructions for humans.
 4. NEVER Comments unless explicitly marked for the agent (see below).
 5. NEVER Only two comment formats are allowed, both for internal machine logic:
-  - `// TODO(agent): short imperative note`
-  - `// ASSUMPTION(agent): brief context note`
+
+- `// TODO(agent): short imperative note`
+- `// ASSUMPTION(agent): brief context note`
+
 6. NEVER Other human-style comments or docstrings.
 7. Behavior Policy:
-  - If the request is ambiguous, make the **minimal safe change**.
-  - Never generate non-functional placeholders unless you use `TODO(agent)` to mark them.
-  - If a file or context is missing, produce a stub that compiles or parses correctly.
-  - Always preserve existing file structure and naming conventions unless instructed otherwise.
+
+- If the request is ambiguous, make the **minimal safe change**.
+- Never generate non-functional placeholders unless you use `TODO(agent)` to mark them.
+- If a file or context is missing, produce a stub that compiles or parses correctly.
+- Always preserve existing file structure and naming conventions unless instructed otherwise.
 
 ### You may produce:
 

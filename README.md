@@ -6,11 +6,11 @@
 
 ## Key Features
 
-* **Node.js Build System**: A streamlined local development and build process powered by Node.js.
+- **Node.js Build System**: A streamlined local development and build process powered by Node.js.
 
 ## Technology Stack
 
-* **Build Tool**: Node.js
+- **Build Tool**: Node.js
 
 ## Purpose
 
