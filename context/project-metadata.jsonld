@@ -34,6 +34,24 @@
       "path": "./scripts",
       "purpose": "Automation and deployment scripts"
     },
+    "data/": {
+      "path": "./data",
+      "purpose": "Data storage with standardized structure",
+      "subdirectories": {
+        "raw/": "Original immutable census block data files",
+        "external/": "Third-party data sources (municipalities, zip codes)",
+        "interim/": "Intermediate transformed data",
+        "processed/": "Final canonical output files"
+      }
+    },
+    "data-schema/": {
+      "path": "./data-schema",
+      "purpose": "JSON-LD schemas defining data structures"
+    },
+    "docs/": {
+      "path": "./docs",
+      "purpose": "Documentation and reference materials"
+    },
     "context/": {
       "path": "./context",
       "purpose": "JSON-LD context files (source of truth for agents)"
