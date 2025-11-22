@@ -13,7 +13,7 @@
   "programmingLanguage": "JavaScript",
   "runtimePlatform": "Node.js",
   "codeRepository": "https://github.com/piergiorgio-roveda/cp-copilot-gis-orchestra",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "dependencies": [],
   "devDependencies": [
     "eslint",
