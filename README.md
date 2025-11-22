@@ -21,6 +21,7 @@ The goal of this project is to build a comprehensive knowledge base for GIS prof
 ## Getting Started
 
 [![YouTube Video](https://i.ytimg.com/vi/cUw-2z6rvQ8/hqdefault.jpg)](https://youtu.be/cUw-2z6rvQ8?si=5MuYxG9ntDHzEMoz)
+
 *Click to view video in Italian language for explanation*
 
 To understand the project initialization process and current status, refer to `initialization.jsonld`. This file contains a complete checklist of initialization tasks that have been completed, including:
