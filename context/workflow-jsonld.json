@@ -39,7 +39,7 @@
     },
     "contentTools": {
       "@type": "DomainTools",
-      "@id": "./gis-tools.jsonld",
+      "@id": "./app-tools.jsonld",
       "description": "Content writing and publishing tools"
     },
     "maintenanceConfig": {
