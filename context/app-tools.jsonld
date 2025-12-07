@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org/",
   "@type": "SoftwareApplication",
-  "@id": "./gis-tools.jsonld",
+  "@id": "./app-tools.jsonld",
   "name": "Content Writer Tools",
   "description": "Toolkit for content creation, article generation, and publishing workflows",
   "dateCreated": "2025-11-06",
