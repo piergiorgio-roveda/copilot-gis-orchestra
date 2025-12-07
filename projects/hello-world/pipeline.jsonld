@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "identifier": "pipeline-hello-world",
+  "name": "Pipeline Hello World",
+  "description": "Pipeline per la pubblicazione ...",
+  "softwareRequirements": {
+    "@type": "SoftwareApplication",
+    "@id": "../../context/project-tools.jsonld",
+    "name": "Project Tools",
+    "description": "Required dependency defining all available tools and workflows for publishing"
+  },
+  "numberOfItems": 0,
+  "enabled": [],
+  "deprecated": [],
+  "availableTools": [],
+  "additionalProperty": {
+    "@type": "PropertyValue",
+    "name": "Notes",
+    "value": [
+      "..."
+    ]
+  }
+}

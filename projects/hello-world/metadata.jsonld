@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Project",
+  "identifier": "project-hello-world",
+  "name": "Project Hello World",
+  "description": "Flussso di lavoro ... per stampare 'Hello, World!' su console.",
+  "version": "1.0.1",
+  "dateCreated": "2025-10-28T22:27:15.918Z",
+  "dateModified": "2025-11-12T15:28:52.527Z",
+  "status": "pending",
+  "pipeline": {
+    "@id": "./pipeline.jsonld"
+  },
+  "deliverables": [],
+  "notes": []
+}

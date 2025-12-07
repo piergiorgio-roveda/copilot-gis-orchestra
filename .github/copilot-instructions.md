@@ -1,6 +1,16 @@
 # GitHub Copilot Instructions
 
-**JSON-LD is the source of truth.**
+## Source of Truth Priority
+
+1. `.github/copilot-instructions.md` - This file
+2. `package.json` - Project configuration and scripts
+3. `context/workflow-jsonld.json` - Workflow manifest
+4. `context/` Linked Data - Referenced context files
+5. `projects/` - Project-specific pipeline configurations
+6. `data-schema/` - API documentation and implementation guides
+7. `docs/` - API documentation and implementation guides
+
+## General Rules
 
 1. NO human explanations. NO setup instructions. Code only.
 2. ALWAYS follow the `JSON-LD Context Files` section below.
@@ -53,8 +63,6 @@ If an operation cannot be completed:
 - Human readability is not required.
 
 ## JSON-LD Context Files
-
-**JSON-LD is the source of truth.**
 
 **Location**: `./context/`
 
