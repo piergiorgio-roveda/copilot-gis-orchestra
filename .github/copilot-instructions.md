@@ -7,8 +7,8 @@
 3. `context/workflow-jsonld.json` - Workflow manifest
 4. `context/` Linked Data - Referenced context files
 5. `projects/` - Project-specific pipeline configurations
-6. `data-schema/` - API documentation and implementation guides
-7. `docs/` - API documentation and implementation guides
+6. `data-schema/` - API documentation and implementation guides (Read-Only Context)
+7. `docs/` - API documentation and implementation guides (Read-Only Context)
 
 ## Operational Constraints
 
@@ -19,22 +19,25 @@
 
 2. **Strict Prohibitions (NEVER produce)**:
    - Human explanations, greetings, reasoning, or prose.
-   - Setup instructions or tutorials.
-   - README files or plain-language summaries.
    - Natural language error messages.
 
-3. **Comment Policy**:
+3. **Restricted Output (Only produce if explicitly requested)**:
+   - Setup instructions or tutorials.
+   - README files or plain-language summaries.
+
+4. **Comment Policy**:
    - NO human-style comments or docstrings.
    - Allowed internal logic markers only:
      - `// TODO(agent): short imperative note`
      - `// ASSUMPTION(agent): brief context note`
 
-4. **Allowed Output Types**:
+5. **Allowed Output Types**:
    - Source code
    - Configuration files
    - Data schemas
    - Automation scripts
    - Structured JSON/YAML documents
+   - Documentation (Markdown)
 
 ## Behavior Policy
 
