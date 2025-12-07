@@ -10,57 +10,44 @@
 6. `data-schema/` - API documentation and implementation guides
 7. `docs/` - API documentation and implementation guides
 
-## General Rules
+## Operational Constraints
 
-1. NO human explanations. NO setup instructions. Code only.
-2. ALWAYS follow the `JSON-LD Context Files` section below.
-3. ALWAYS follow the `Purpose (Coding Agent + prompt only)` section below.
-4. ALWAYS follow the `Conventional Markdown Rules` section below.
+1. **Machine-Readable Output Only**:
+   - Transform prompts into code, config, schemas, or scripts.
+   - The output must be immediately processable by machines.
+   - Human readability is not required.
 
-## Purpose (Coding Agent + prompt only)
+2. **Strict Prohibitions (NEVER produce)**:
+   - Human explanations, greetings, reasoning, or prose.
+   - Setup instructions or tutorials.
+   - README files or plain-language summaries.
+   - Natural language error messages.
 
-1. You are a `coding agent`. Your task is to transform prompts into `machine-readable` code or `configuration files` — not explanations for humans.
-2. NEVER Greetings, reasoning, or prose.
-3. NEVER Instructions for humans.
-4. NEVER Comments unless explicitly marked for the agent (see below).
-5. NEVER Only two comment formats are allowed, both for internal machine logic:
+3. **Comment Policy**:
+   - NO human-style comments or docstrings.
+   - Allowed internal logic markers only:
+     - `// TODO(agent): short imperative note`
+     - `// ASSUMPTION(agent): brief context note`
 
-- `// TODO(agent): short imperative note`
-- `// ASSUMPTION(agent): brief context note`
+4. **Allowed Output Types**:
+   - Source code
+   - Configuration files
+   - Data schemas
+   - Automation scripts
+   - Structured JSON/YAML documents
 
-6. NEVER Other human-style comments or docstrings.
-7. Behavior Policy:
+## Behavior Policy
 
-- If the request is ambiguous, make the **minimal safe change**.
-- Never generate non-functional placeholders unless you use `TODO(agent)` to mark them.
-- If a file or context is missing, produce a stub that compiles or parses correctly.
-- Always preserve existing file structure and naming conventions unless instructed otherwise.
+1. **Ambiguity & Safety**:
+   - If the request is ambiguous, make the **minimal safe change**.
+   - Always preserve existing file structure and naming conventions unless instructed otherwise.
 
-### You may produce:
-
-- Source code
-- Configuration files
-- Data schemas
-- Automation scripts
-- Structured JSON/YAML documents
-
-If an operation cannot be completed:
-
-- Return a valid manifest with `"mode": "pending"`.
-- Include placeholder code blocks containing `TODO(agent)` markers.
-- Never emit natural language error messages.
-
-### NEVER produce:
-
-- README files
-- Tutorials
-- Step-by-step explanations
-- Plain-language summaries
-
-### Final Principle
-
-- The output must be **immediately processable by machines**.
-- Human readability is not required.
+2. **Missing Context & Errors**:
+   - If a file or context is missing, produce a stub that compiles or parses correctly.
+   - If an operation cannot be completed:
+     - Return a valid manifest with `"mode": "pending"`.
+     - Include placeholder code blocks containing `TODO(agent)` markers.
+   - Never generate non-functional placeholders unless marked with `TODO(agent)`.
 
 ## JSON-LD Context Files
 
@@ -86,6 +73,4 @@ Create if not present.
 8. 80-char line width - Prettier default
 9. One blank line between sections
 10. Consistent heading levels (no H2 → H4 jumps)
-11. All code blocks have language
-12. Lists use only `-` marker
-13. No horizontal rules except end-of-document
+11. No horizontal rules except end-of-document
